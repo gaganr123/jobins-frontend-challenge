@@ -1,9 +1,7 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import {
   Bars3CenterLeftIcon,
-  PencilIcon,
-  ChevronDownIcon,
-  CreditCardIcon,
+ 
   Cog8ToothIcon,
 } from "@heroicons/react/24/solid";
 import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
@@ -11,17 +9,30 @@ import { Menu, Transition, Popover } from "@headlessui/react";
 import Link from "next/link";
 
 export default function TopBar({ showNav, setShowNav }) {
+ const notifications=[{
+  id:1,
+  title:"Title 1",
+  message:"Notification message 1",
+ },
+ {
+ id:2,
+ title:"Title 2",
+ message:"Notification message 2"
+},
+]
   return (
     <div
-      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
+      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] bg-gray-100 ${
         showNav ? "pl-56" : ""
       }`}
     >
-      <div className="pl-4 md:pl-16">
+      <div className="flex pl-4 md:pl-16">
+        {showNav===false && 
         <Bars3CenterLeftIcon
           className="h-8 w-8 text-gray-700 cursor-pointer"
           onClick={() => setShowNav(!showNav)}
-        />
+        />}
+        <h1 className="ml-2 font-bold text-lg">Dashboard</h1>
       </div>
       <div className="flex items-center pr-4 md:pr-16">
         <Popover className="relative">
@@ -45,60 +56,26 @@ export default function TopBar({ showNav, setShowNav }) {
                     Mark all as read
                   </a>
                 </div>
-                <div className="mt-4 grid gap-4 grid-cols-1 overflow-hidden">
-                  <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
-                      <CheckIcon className="h-4 w-4 text-green-600" />
+                {notifications.map((notification)=>{
+                  return(
+                    <div className="mt-4 grid gap-4 grid-cols-1 overflow-hidden" key={notification.id}>
+                    <div className="flex">
+                      <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
+                        <CheckIcon className="h-4 w-4 text-green-600" />
+                      </div>
+                      <div className="ml-4">
+                        <p className="font-medium text-gray-700">
+                         {notification.title}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate">
+                       {notification.message}
+                        </p>
+                      </div>
                     </div>
-                    <div className="ml-4">
-                      <p className="font-medium text-gray-700">
-                        Notification Title
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        Test Notification text for design
-                      </p>
                     </div>
-                  </div>
-                  <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
-                      <CheckIcon className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="font-medium text-gray-700">
-                        Notification Title
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        Test Notification text for design
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
-                      <CheckIcon className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="font-medium text-gray-700">
-                        Notification Title
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        Test Notification text for design
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="rounded-full shrink-0 bg-green-200 h-8 w-8 flex items-center justify-center">
-                      <CheckIcon className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="font-medium text-gray-700">
-                        Notification Title
-                      </p>
-                      <p className="text-sm text-gray-500 truncate">
-                        Test Notification text for design
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  )
+                })}
+               
               </div>
             </Popover.Panel>
           </Transition>
@@ -108,15 +85,12 @@ export default function TopBar({ showNav, setShowNav }) {
             <Menu.Button className="inline-flex w-full justify-center items-center">
               <picture>
                 <img
-                  src="/man-smiling.jpg"
+                  src="/user.png"
                   className="rounded-full h-8 md:mr-4 border-2 border-white shadow-sm"
                   alt="profile picture"
                 />
               </picture>
-              <span className="hidden md:block font-medium text-gray-700">
-                Rettson
-              </span>
-              <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" />
+             
             </Menu.Button>
           </div>
           <Transition
@@ -130,28 +104,11 @@ export default function TopBar({ showNav, setShowNav }) {
           >
             <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
               <div className="p-1">
+               
                 <Menu.Item>
                   <Link
-                    href="#"
-                    className="flex hover:bg-orange-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
-                  >
-                    <PencilIcon className="h-4 w-4 mr-2" />
-                    Edit
-                  </Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link
-                    href="#"
-                    className="flex hover:bg-orange-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
-                  >
-                    <CreditCardIcon className="h-4 w-4 mr-2" />
-                    Billing
-                  </Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link
-                    href="#"
-                    className="flex hover:bg-orange-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
+                    to="#"
+                    className="flex hover:bg-gray-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center"
                   >
                     <Cog8ToothIcon className="h-4 w-4 mr-2" />
                     Settings

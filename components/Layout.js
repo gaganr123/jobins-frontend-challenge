@@ -40,7 +40,7 @@ export default function Layout({ children }) {
         leaveFrom="translate-x-0"
         leaveTo="-translate-x-full"
       >
-        <SideBar showNav={showNav} />
+        <SideBar showNav={showNav} setShowNav={setShowNav} />
       </Transition>
       <main
         className={`pt-16 transition-all duration-[400ms] ${
