@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {  MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Table = () => {
   const data=[
@@ -55,7 +55,7 @@ const Table = () => {
       <div className='md:flex justify-between'>
         <div className='md:flex border-none gap-4 m-sm-4'>
            <h2 className='bg-white p-3 rounded-md mt-2'>Status: <span className='ml-1'><button>All <span>^</span></button></span></h2> 
-           <div className='bg-white rounded-md mt-2'> <input type='search' placeholder='Search..' className='p-3'/></div>
+           <div className='bg-white rounded-md mt-2 flex justify-center'> <input type='search' placeholder='Search..' className='p-3'/> <span>< MagnifyingGlassIcon className='h-8 mt-2'/></span></div>
          </div> 
          
          <div className='flex border-none bg-white p-3 rounded-md mt-2'>
