@@ -41,7 +41,7 @@ const CardThree = () => {
               <div className="w-full bg-gray-100 rounded-full h-2.5 dark:bg-gray-200 mt-3">
                <div className="bg-blue-600 h-2.5 rounded-full" style={{width: item.percent}}></div>
                  </div>
-        <p className={`flex ml-2 ${item.percent >= 30 ? "text-lime-500":"text-red-500"}`}>{item.percent >= 30 ?<span><ChevronUpIcon  className='h-4 mt-1 '/></span>:<span><ChevronDownIcon  Icon  className='h-4 mt-1'/></span> }{item.percent}% </p>
+        <p className={`flex ml-2 ${item.percent >= 30 ? "text-lime-500":"text-red-500"}`}>{item.percent >= 30 ? <span><ChevronUpIcon  className='h-4 mt-1 '/></span>:<span><ChevronDownIcon  className='h-4 mt-1'/></span> }{item.percent}% </p>
        
      
     </div>

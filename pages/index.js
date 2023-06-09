@@ -21,8 +21,11 @@ export default function Home() {
       <div className="grid col-1 bg-white h-70 shadow-sm mb-10">
         <Tabs/>
       </div>
-      <div className="grid col-1  h-70 shadow-sm mb-10">
-       <Table/>
+      <div className="grid col-1 h-70 shadow-sm mb-10">
+        <div className="overflow-x-auto">
+        <Table/>
+        </div>
+      
       </div>
     </>
   );
